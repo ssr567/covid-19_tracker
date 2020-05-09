@@ -6,7 +6,12 @@ import styles from './App.module.css';
 
 import image from './images/image.png';
 
-class App extends React.Component<any,any> {
+interface IState{
+  data:any;
+  country:string;
+}
+
+class App extends React.Component<any,IState> {
   state = {
     data: {},
     country: '',
@@ -18,7 +23,7 @@ class App extends React.Component<any,any> {
     this.setState({ data });
   }
 
-  handleCountryChange = async (country:any) => {
+  handleCountryChange = async (country:string) => {
     const data = await fetchData(country);
 
     this.setState({ data, country: country });
